@@ -1,4 +1,4 @@
-var Stepper = require('wpi-stepper').Stepper;
+import { Stepper } from 'wpi-stepper';
 
 const pins = [
   17, // A+
