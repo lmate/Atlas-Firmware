@@ -1,4 +1,4 @@
-import { Stepper } from 'wpi-stepper';
+import { Stepper } from 'wpi-stepper/es6/lib/stepper';
 
 const pins = [
   17, // A+
