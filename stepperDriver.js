@@ -27,13 +27,13 @@ function run(steps, direction, speed) {
 
     setTimeout(() => {
       for (let pinID = 0; pinID < motorPins.length; pinID++) {
-        motorPins[pinID].writeSync(step_sequence[sequence_step_counter][pinID]);
+        motorPins[pinID].writeSync(step_sequence[sequence_step_counter % 8][pinID]);
       }
 
       if (direction == 'CW') {
-        sequence_step_counter = (sequence_step_counter + 1) % 8;
+        sequence_step_counter++;
       } else if (direction == 'CCW') {
-        sequence_step_counter = (sequence_step_counter - 1) % 8
+        sequence_step_counter--;
       }
 
     }, speed * (i + 1));
