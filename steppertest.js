@@ -14,14 +14,10 @@ const step_sequence = [
 
 
 function cleanup() {
-  in1.writeSync(0);
-  in2.writeSync(0);
-  in3.writeSync(0);
-  in4.writeSync(0);
-  in1.unexport();
-  in2.unexport();
-  in3.unexport();
-  in4.unexport();
+  for (let motorPin of motorPins) {
+    motorPin.writeSync(0);
+    motorPin.unexport();
+  }
 }
 
 function run(steps, direction, speed) {
@@ -41,7 +37,7 @@ function run(steps, direction, speed) {
       }
 
     }, speed * (i + 1));
-    
+
   }
   setTimeout(cleanup, speed * (steps + 1));
 }
