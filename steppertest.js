@@ -1,6 +1,14 @@
-import StepperWiringPi from "stepper-wiringpi";
-var motor = StepperWiringPi.setup(4096, 17, 18, 27, 22);
+var Stepper = require('wpi-stepper').Stepper;
 
-motor.setSpeed(30);
-
-motor.forward();
+const pins = [
+  17, // A+
+  18, // A-
+  27, // B+
+  22  // B-
+];
+const motor = new Stepper({ pins, steps: 4096 });
+ 
+motor.speed = 20; // 20 RPM
+ 
+// Move the motor forward 800 steps (4 rotations), logging to console when done:
+motor.move(800).then(() => console.log('motion complete'));
