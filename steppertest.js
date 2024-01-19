@@ -42,10 +42,10 @@ function run() {
 }
 
 function step() {
-  in1.writeSync(step_sequence[motor_step_counter][0]);
-  in2.writeSync(step_sequence[motor_step_counter][1]);
-  in3.writeSync(step_sequence[motor_step_counter][2]);
-  in4.writeSync(step_sequence[motor_step_counter][3]);
+  in1.writeSync(step_sequence[Math.abs(motor_step_counter)][0]);
+  in2.writeSync(step_sequence[Math.abs(motor_step_counter)][1]);
+  in3.writeSync(step_sequence[Math.abs(motor_step_counter)][2]);
+  in4.writeSync(step_sequence[Math.abs(motor_step_counter)][3]);
 
   if (direction) {
     motor_step_counter = (motor_step_counter - 1) % 8;
