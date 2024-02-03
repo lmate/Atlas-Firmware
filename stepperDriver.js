@@ -20,8 +20,8 @@ const step_sequence = [
   [0, 0, 0, 1]];
 
 
-function cleanup() {
-  for (let motorPin of motorPins) {
+function cleanup(motor) {
+  for (let motorPin of motor.motorPins) {
     motorPin.writeSync(0);
     motorPin.unexport();
   }
@@ -46,7 +46,7 @@ function run(motor, steps, direction, speed) {
     }, speed * (i + 1));
 
   }
-  setTimeout(cleanup, speed * (steps + 1));
+  setTimeout(() => cleanup(motor), speed * (steps + 1));
 }
 
 run(motors.L, 4096, 'CW', 1);
